@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Time(hours, minutes, seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
+    Time.prototype.toString = function () {
+        let hour;
+        let minutes;
+        let seconds;
+
+        if (this.hours <= 23 && this.hours >= 0 && this.minutes <= 59 && this.minutes >= 0 && this.seconds <= 59 && this.seconds >= 0) {
+            if (this.hours < 10) {
+                hour = "0" + this.hours;
+            } else {
+                hour = this.hours;
+            }
+            if (this.minutes < 10) {
+                minutes = "0" + this.minutes;
+            } else {
+                minutes = this.minutes;
+            }
+            if (this.seconds < 10) {
+                seconds = "0" + this.seconds;
+            } else {
+                seconds = this.seconds;
+            }
+            document.write("<br>" + hour + ":" + minutes + ":" + seconds);
+        } else {
+            document.write("<br>" + "Введен не верный формат времени");
+        }
+    }
+
+    let time1 = new Time(23, 59, 12);
+    time1.toString();
+
+
+    Time.prototype.timeChange = function (seconds) {
+        let second = this.seconds;
+        let count = 0;
+
+        this.seconds += seconds;
+        second += seconds;
+        if (this.seconds >= 60) {
+            for (let i = 60; second > 60;) {
+                second -= 60;
+                count++;
+            }
+            if (count > 0) {
+                this.seconds -= (60 * count);
+            }
+            if (count === 0) {
+                this.seconds -= 60;
+            }
+            this.minutes += count;
+        }
+        let minutesLoc = 0;
+        let count2 = 0;
+        minutesLoc = this.minutes;
+        if (this.minutes >= 60) {
+            for (let i = 60; minutesLoc >= 60;) {
+                minutesLoc -= 60;
+                count2++;
+            }
+            if (count2 > 0) {
+                this.minutes -= (60 * count2);
+            }
+            if (count2 === 0) {
+                this.minutes -= 60;
+            }
+            this.hours += count2;
+
+
+            let hour = this.hours;
+            let count3 = 0;
+            if (this.hours > 24) {
+                for (let i = 24; hour > 24;) {
+                    hour -= 24;
+                    count3++;
+                }
+                if (this.hours > 24) {
+                    this.hours -= (24 * count3) - 1;
+                }
+                if (this.hours === 24) {
+                    this.hours -= 24;
+                }
+            }
+        }
+    }
+    time1.timeChange(8000);
+    time1.toString();
+
+    Time.prototype.chengMinutes = function (minutes) {
+        this.minutes += minutes;
+        let minutesLoc = 0;
+        let count2 = 0;
+        minutesLoc = this.minutes;
+        if (this.minutes >= 60) {
+            for (let i = 60; minutesLoc >= 60;) {
+                minutesLoc -= 60;
+                count2++;
+            }
+            if (count2 > 0) {
+                this.minutes -= (60 * count2);
+            }
+            if (count2 === 0) {
+                this.minutes -= 60;
+            }
+            this.hours += count2;
+
+
+            let hour = this.hours;
+            let count3 = 0;
+            if (this.hours > 24) {
+                for (let i = 24; hour > 24;) {
+                    hour -= 24;
+                    count3++;
+                }
+                if (this.hours > 24) {
+                    this.hours -= (24 * count3) - 1;
+                }
+                if (this.hours === 24) {
+                    this.hours -= 24;
+                }
+            }
+        }
+    }
+
+    time1.chengMinutes(70);
+    time1.toString();
+
+    Time.prototype.chengHours = function (hours) {
+        this.hours += hours;
+
+        let hour = this.hours;
+        let count3 = 0;
+        if (this.hours > 24) {
+            for (let i = 24; hour > 24;) {
+                hour -= 24;
+                count3++;
+            }
+            if (this.hours > 24) {
+                this.hours -= (24 * count3) - 1;
+            }
+            if (this.hours === 24) {
+                this.hours -= 24;
+            }
+        }
+    }
+
+    time1.chengHours(26);
+    time1.toString();
+
+</script>
+</body>
+</html>

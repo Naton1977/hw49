@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Car(manufacturer, model, yearOfIssue, averageSpeed) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.yearOfIssue = yearOfIssue;
+        this.averageSpeed = averageSpeed;
+    }
+
+    Car.prototype.toString = function () {
+        document.writeln(`Производитель : ${this.manufacturer} <br> Модель : ${this.model} <br> Год Выпуска : ${this.yearOfIssue} <br> Средняя скорость : ${this.averageSpeed}  км/ч`);
+    }
+
+    let Opel = new Car("Опель", "Вектра", "2015", 110);
+    Opel.toString();
+
+    function timing(distance, Car) {
+        let time = distance / (Car.averageSpeed);
+        let recreation = Math.floor(time / 4);
+        if (recreation > 0) {
+            time += recreation;
+        }
+        document.writeln("<br>" + "Расчесное расстояние : " + distance + " км" + "<br>" +
+            "Расчетная скорость движения : " + Car.averageSpeed + " км/ч" + "<br>" + "Время в пути с учетом отдыха : " + time.toFixed(2) + " час");
+    }
+
+    timing(1070, Opel);
+
+</script>
+
+</body>
+</html>

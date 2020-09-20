@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fraction(numerator, denominator) {
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+
+    function addition(Fraction1, Fraction2) {
+        let resultAddition;
+        if (Fraction1.denominator === Fraction2.denominator) {
+            let numerator = Fraction1.numerator + Fraction2.numerator;
+            resultAddition = new Fraction(numerator, Fraction1.denominator);
+
+        }
+        if (Fraction1.denominator !== Fraction2.denominator) {
+            let numerator = ((Fraction1.numerator * Fraction2.denominator) + (Fraction2.numerator * Fraction1.denominator));
+            let denominator = ((Fraction1.denominator * Fraction2.denominator) + (Fraction2.denominator * Fraction1.denominator)) / 2;
+
+            resultAddition = new Fraction(numerator, denominator);
+        }
+        document.writeln(resultAddition.numerator + "/" + resultAddition.denominator);
+    }
+
+    let fraction1 = new Fraction(1, 3);
+    let fraction2 = new Fraction(4, 5);
+    addition(fraction1, fraction2);
+
+    function subtraction(Fraction1, Fraction2) {
+        let resultAddition;
+        if (Fraction1.denominator === Fraction2.denominator) {
+            let numerator = Fraction1.numerator - Fraction2.numerator;
+            resultAddition = new Fraction(numerator, Fraction1.denominator);
+
+        }
+        if (Fraction1.denominator !== Fraction2.denominator) {
+            let numerator = ((Fraction1.numerator * Fraction2.denominator) - (Fraction2.numerator * Fraction1.denominator));
+            let denominator = ((Fraction1.denominator * Fraction2.denominator) + (Fraction2.denominator * Fraction1.denominator)) / 2;
+
+            resultSubstraction = new Fraction(numerator, denominator);
+        }
+        document.writeln("<br>" + resultSubstraction.numerator + "/" + resultSubstraction.denominator);
+    }
+
+    let fraction3 = new Fraction(7, 8);
+    let fraction4 = new Fraction(3, 9);
+    subtraction(fraction3, fraction4);
+
+    function multiplication(Fraction1, Fraction2) {
+        let numerator = Fraction1.numerator * Fraction2.numerator;
+        let denominator = Fraction1.denominator * Fraction2.denominator;
+        let fraction = new Fraction(numerator, denominator);
+        document.writeln("<br>" + fraction.numerator + "/" + fraction.denominator);
+    }
+
+    let fraction5 = new Fraction(2, 3);
+    let fraction6 = new Fraction(4, 5);
+    multiplication(fraction5, fraction6);
+
+
+    function division(Fraction1, Fraction2) {
+        let numerator = Fraction1.numerator * Fraction2.denominator;
+        let denominator = Fraction1.denominator * Fraction2.numerator;
+        let fraction = new Fraction(numerator, denominator);
+        document.writeln("<br>" + fraction.numerator + "/" + fraction.denominator);
+    }
+
+    let fraction7 = new Fraction(4, 7);
+    let fraction8 = new Fraction(2, 5);
+    division(fraction7, fraction8);
+
+
+    function redaction(Fraction1) {
+        let result1 = 1;
+        for (let i = 2; ; i++) {
+            if (Fraction1.numerator % i === 0) {
+                if (Fraction1.denominator % i === 0) {
+                    result1 = i;
+                    break;
+                }
+            }
+            if (i > Fraction1.numerator && i > Fraction1.denominator) {
+                break;
+            }
+
+        }
+
+        let numerator = Fraction1.numerator / result1;
+        let denominator = Fraction1.denominator / result1;
+        let fraction = new Fraction(numerator, denominator);
+
+        let result2 = 1;
+        for (let i = 2; ; i++) {
+            if (fraction.numerator % i === 0) {
+                if (fraction.denominator % i === 0) {
+                    result2 = i;
+                    break;
+                }
+            }
+
+            if (i > fraction.numerator && i > fraction.denominator) {
+                break;
+            }
+        }
+        let numerator2 = fraction.numerator / result2;
+        3
+        let denominator2 = fraction.denominator / result2
+        let fraction2 = new Fraction(numerator2, denominator2);
+        if (fraction2.denominator === 1) {
+            document.writeln("<br>" + fraction2.numerator);
+        } else {
+            document.writeln("<br>" + fraction2.numerator + "/" + fraction2.denominator);
+        }
+
+    }
+
+    let fraction9 = new Fraction(182, 195);
+    redaction(fraction9);
+
+</script>
+</body>
+</html>
